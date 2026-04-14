@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { Sparkles, Video, Share2, BarChart3, Shield } from 'lucide-react'
 import GlassCard from '../shared/GlassCard'
 import { agents } from '../../data/agents'

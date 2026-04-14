@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { Plus } from 'lucide-react'
 import { agents } from '../../data/agents'
 import AgentCard from '../shared/AgentCard'

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Bot, ShoppingCart, Sparkles, BarChart3, Home } from 'lucide-react'
+import { Bot, ShoppingCart, Sparkles, BarChart3 } from 'lucide-react'
 import TabBar from '../components/app/TabBar'
 import AgentLaunchpad from '../components/app/AgentLaunchpad'
 import AttentionMarket from '../components/app/AttentionMarket'
