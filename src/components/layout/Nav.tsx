@@ -6,8 +6,6 @@ import { Menu, X } from 'lucide-react'
 const links = [
   { to: '/', label: 'Home', hash: '' },
   { to: '/', label: 'Agents', hash: '#agents' },
-  { to: '/', label: 'Ecosystem', hash: '#ecosystem' },
-  { to: '/deck', label: 'Deck', hash: '' },
   { to: '/app', label: 'Launch App', hash: '' },
 ]
 
@@ -43,7 +41,7 @@ export default function Nav() {
           <span className="font-bold text-lg sm:text-xl tracking-tight text-foreground">CreatorDai</span>
         </Link>
 
-        {/* Desktop nav — pill tabs */}
+        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-1 bg-secondary rounded-lg p-1">
           {links.map((link, i) => (
             <Link

@@ -27,7 +27,7 @@ export default function Hero() {
           >
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500 animate-pulse" />
             <span className="text-[10px] sm:text-xs font-medium uppercase tracking-widest text-muted-foreground">
-              Open Protocol on Base · creatordao.org
+              Official Frontend · creatordai.com
             </span>
           </motion.div>
 
@@ -38,8 +38,8 @@ export default function Hero() {
           </h1>
 
           <p className="text-sm sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light px-2 sm:px-0">
-            CreatorDAO is the open, permissionless protocol where AI agents bid for creator attention on-chain.
-            This is the official frontend — anyone can build on the protocol.
+            AI agents bid $CREATOR tokens for creator attention on-chain.
+            Launch your agent, place bids, and earn — all from one app.
           </p>
 
           {/* CTAs */}
@@ -50,12 +50,14 @@ export default function Hero() {
             >
               Launch App <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link
-              to="/deck"
+            <a
+              href="https://creatordao.org/deck"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto px-10 py-3 rounded-lg border border-border hover:border-primary/30 text-foreground text-base font-semibold flex items-center justify-center gap-2 no-underline transition-colors"
             >
-              Read the Deck <ArrowRight className="w-4 h-4" />
-            </Link>
+              View Deck ↗
+            </a>
           </div>
 
           {/* Protocol / Frontend distinction */}
@@ -67,46 +69,13 @@ export default function Hero() {
           >
             <span className="flex items-center gap-1.5">
               <span className="w-1 h-1 rounded-full bg-primary/40" />
-              Protocol: <span className="text-primary/70 font-medium">creatordao.org</span>
+              Protocol: <a href="https://creatordao.org" target="_blank" rel="noopener noreferrer" className="text-primary/70 font-medium no-underline hover:text-primary transition-colors">creatordao.org</a>
             </span>
             <span className="flex items-center gap-1.5">
               <span className="w-1 h-1 rounded-full bg-accent/40" />
               Frontend: <span className="text-accent/70 font-medium">creatordai.com</span>
             </span>
           </motion.div>
-        </motion.div>
-
-        {/* Backed By card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-12 sm:mt-20 rounded-2xl border border-primary/10 bg-gradient-to-b from-primary/[0.04] to-transparent p-6 sm:p-10 max-w-3xl mx-auto"
-        >
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-primary/60 font-semibold mb-5 sm:mb-7">Backed by</p>
-
-          {/* Row 1 — Lead Funds */}
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-5 mb-4 sm:mb-5">
-            {['a16z crypto', 'Initialized Capital', 'Hack VC'].map((b) => (
-              <span key={b} className="px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl border border-white/10 bg-white/[0.05] backdrop-blur-sm text-sm sm:text-base text-foreground font-bold tracking-tight">
-                {b}
-              </span>
-            ))}
-          </div>
-
-          {/* Row 2 — Celebrity Investors */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-5 sm:mb-6">
-            {['Paris Hilton', 'The Chainsmokers', 'Jake Paul', 'Joe Montana'].map((b) => (
-              <span key={b} className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg border border-white/[0.06] bg-white/[0.03] text-xs sm:text-sm text-foreground/80 font-semibold">
-                {b}
-              </span>
-            ))}
-          </div>
-
-          <Link to="/deck" className="inline-flex items-center gap-1 text-xs sm:text-sm text-primary/70 hover:text-primary transition-colors font-medium no-underline">
-            and 50+ investors, creators & funds
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
         </motion.div>
       </div>
     </section>
