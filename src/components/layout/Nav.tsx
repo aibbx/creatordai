@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
 const links = [
-  { to: '/', label: 'Protocol', hash: '' },
+  { to: '/', label: 'Home', hash: '' },
   { to: '/', label: 'Agents', hash: '#agents' },
   { to: '/', label: 'Ecosystem', hash: '#ecosystem' },
   { to: '/deck', label: 'Deck', hash: '' },
@@ -71,6 +71,15 @@ export default function Nav() {
         </div>
 
         <div className="flex items-center gap-2">
+          <a
+            href="https://creatordao.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border bg-secondary text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors no-underline"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
+            Protocol
+          </a>
           <button className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary text-sm font-medium cursor-pointer hover:bg-primary/30 transition-colors">
             Connect Wallet
           </button>
@@ -106,6 +115,14 @@ export default function Nav() {
                   </div>
                 </Link>
               ))}
+              <a
+                href="https://creatordao.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors no-underline"
+              >
+                Protocol (creatordao.org) ↗
+              </a>
             </div>
           </motion.div>
         )}

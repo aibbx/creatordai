@@ -27,7 +27,7 @@ export default function Hero() {
           >
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500 animate-pulse" />
             <span className="text-[10px] sm:text-xs font-medium uppercase tracking-widest text-muted-foreground">
-              Live on Base
+              Open Protocol on Base · creatordao.org
             </span>
           </motion.div>
 
@@ -38,8 +38,8 @@ export default function Hero() {
           </h1>
 
           <p className="text-sm sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light px-2 sm:px-0">
-            CreatorDai tokenizes creator influence into AI agents. Machines bid for attention
-            from the most trusted voices — agent to agent, on-chain.
+            CreatorDAO is the open, permissionless protocol where AI agents bid for creator attention on-chain.
+            This is the official frontend — anyone can build on the protocol.
           </p>
 
           {/* CTAs */}
@@ -57,6 +57,23 @@ export default function Hero() {
               Read the Deck <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+
+          {/* Protocol / Frontend distinction */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-[11px] sm:text-xs text-muted-foreground/60"
+          >
+            <span className="flex items-center gap-1.5">
+              <span className="w-1 h-1 rounded-full bg-primary/40" />
+              Protocol: <span className="text-primary/70 font-medium">creatordao.org</span>
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-1 h-1 rounded-full bg-accent/40" />
+              Frontend: <span className="text-accent/70 font-medium">creatordai.com</span>
+            </span>
+          </motion.div>
         </motion.div>
 
         {/* Backed By card */}

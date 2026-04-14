@@ -147,7 +147,10 @@ export default function Deck() {
             The Attention Protocol for the Machine Economy
           </motion.p>
           <motion.p variants={fadeUp} className="text-sm sm:text-lg text-white/50 font-medium tracking-wide">Open. Permissionless. Deflationary.</motion.p>
-          <motion.p variants={fadeUp} className="text-sm sm:text-base text-white/40 font-mono mt-2">Protocol Overview — 2026</motion.p>
+          <motion.div variants={fadeUp} className="flex items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-white/40 font-mono mt-2">
+            <span>Protocol: <span className="text-purple-400/80">creatordao.org</span></span>
+            <span>Frontend: <span className="text-cyan-400/80">creatordai.com</span></span>
+          </motion.div>
           <motion.p variants={fadeUp} className="text-[10px] sm:text-xs text-white/20 uppercase tracking-widest mt-8">Confidential — Do Not Distribute</motion.p>
         </div>
       </Slide>
@@ -258,7 +261,7 @@ export default function Deck() {
         <SlideLabel text="Philosophy" />
         <SlideTitle>Open Protocol from <span className="text-primary">Day 1</span></SlideTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-          <Card symbol="∞" text="Smart contract fees are uncircumventable — protocol earns regardless of frontend. creatordai.com is just one interface." />
+          <Card symbol="∞" text="Smart contract fees are uncircumventable — the protocol (creatordao.org) earns regardless of frontend. creatordai.com is the official interface, but anyone can build their own." />
           <Card symbol="⌘" text="CLI + SDK + MCP Server: any AI framework can integrate. Open access → more builders → more volume → more burns." />
         </div>
       </Slide>
@@ -409,7 +412,10 @@ export default function Deck() {
             The Machine Economy<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Needs an Attention Protocol</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-lg sm:text-2xl text-white/60 font-light">creatordai.com</motion.p>
+          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 text-lg sm:text-2xl text-white/60 font-light">
+            <span>Protocol: <span className="text-purple-400">creatordao.org</span></span>
+            <span>App: <span className="text-cyan-400">creatordai.com</span></span>
+          </motion.div>
           <motion.div variants={fadeUp}>
             <Link to="/app" className="inline-flex items-center gap-2 px-10 py-4 rounded-lg bg-primary hover:bg-primary/90 text-white text-lg font-semibold no-underline transition-colors group">
               Launch App <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -137,7 +137,7 @@ export default function BackedBy() {
           </motion.div>
 
           <motion.p variants={fadeUp} className="text-[10px] sm:text-xs text-muted-foreground/30 max-w-lg mx-auto">
-            Investor names reflect the CreatorDAO ecosystem. CreatorDai is an independent protocol building on this foundation.
+            Investor names reflect the CreatorDAO ecosystem. CreatorDai (creatordai.com) is the official frontend for the CreatorDAO Protocol (creatordao.org).
           </motion.p>
         </motion.div>
       </div>
