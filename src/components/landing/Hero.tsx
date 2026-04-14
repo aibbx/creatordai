@@ -1,85 +1,95 @@
 import { motion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Zap } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 pt-16 overflow-hidden">
-      {/* Background gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/15 rounded-full blur-[128px] pointer-events-none" />
+    <section className="relative min-h-[90vh] sm:min-h-screen flex items-center justify-center pt-16 sm:pt-0 overflow-hidden">
+      {/* Animated mesh background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/[0.06] blur-[120px] animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/[0.04] blur-[100px]" />
+      </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
+      <div className="relative z-10 container mx-auto px-5 sm:px-4 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary-light text-sm mb-8"
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto space-y-5 sm:space-y-8"
         >
-          <Zap size={14} />
-          Open Protocol on Base L2
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-border bg-secondary"
+          >
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-[10px] sm:text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              Live on Base
+            </span>
+          </motion.div>
+
+          {/* Title */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[0.95]">
+            <span className="block text-foreground">The Attention Protocol for</span>
+            <span className="block text-primary">the Machine Economy</span>
+          </h1>
+
+          <p className="text-sm sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light px-2 sm:px-0">
+            CreatorDai tokenizes creator influence into AI agents. Machines bid for attention
+            from the most trusted voices — agent to agent, on-chain.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4 px-4 sm:px-0">
+            <Link
+              to="/app"
+              className="w-full sm:w-auto px-10 py-3 rounded-lg bg-primary hover:bg-primary/90 text-white text-base font-semibold flex items-center justify-center gap-2 no-underline transition-colors group"
+            >
+              Launch App <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              to="/deck"
+              className="w-full sm:w-auto px-10 py-3 rounded-lg border border-border hover:border-primary/30 text-foreground text-base font-semibold flex items-center justify-center gap-2 no-underline transition-colors"
+            >
+              Read the Deck <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="font-heading text-5xl md:text-7xl font-bold text-text-heading leading-tight tracking-tight mb-6"
-        >
-          The Attention Protocol
-          <br />
-          <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-            for the Machine Economy
-          </span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="text-lg md:text-xl text-text-muted max-w-2xl mx-auto mb-10"
-        >
-          Permissionless smart contracts let AI agents bid for creator attention on-chain.
-          Video generation, social distribution, and ROI analytics — all in one protocol.
-        </motion.p>
-
+        {/* Backed By card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ delay: 0.8, duration: 0.6 }}
+          className="mt-12 sm:mt-20 rounded-2xl border border-primary/10 bg-gradient-to-b from-primary/[0.04] to-transparent p-6 sm:p-10 max-w-3xl mx-auto"
         >
-          <Link
-            to="/app"
-            className="px-8 py-3.5 rounded-full bg-primary hover:bg-primary-light text-white font-semibold transition-colors flex items-center gap-2 no-underline"
-          >
-            Launch App <ArrowRight size={18} />
-          </Link>
-          <Link
-            to="/deck"
-            className="px-8 py-3.5 rounded-full border border-border hover:border-primary/50 text-text-heading font-semibold transition-colors no-underline"
-          >
-            View Deck
-          </Link>
-        </motion.div>
+          <p className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-primary/60 font-semibold mb-5 sm:mb-7">Backed by</p>
 
-        {/* Stats bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto"
-        >
-          {[
-            { value: '$20M+', label: 'Raised' },
-            { value: '50+', label: 'Backers' },
-            { value: 'Base L2', label: 'Network' },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <p className="text-2xl md:text-3xl font-heading font-bold text-text-heading">{stat.value}</p>
-              <p className="text-sm text-text-muted">{stat.label}</p>
-            </div>
-          ))}
+          {/* Row 1 — Lead Funds */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-5 mb-4 sm:mb-5">
+            {['a16z crypto', 'Initialized Capital', 'Hack VC'].map((b) => (
+              <span key={b} className="px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl border border-white/10 bg-white/[0.05] backdrop-blur-sm text-sm sm:text-base text-foreground font-bold tracking-tight">
+                {b}
+              </span>
+            ))}
+          </div>
+
+          {/* Row 2 — Celebrity Investors */}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-5 sm:mb-6">
+            {['Paris Hilton', 'The Chainsmokers', 'Jake Paul', 'Joe Montana'].map((b) => (
+              <span key={b} className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg border border-white/[0.06] bg-white/[0.03] text-xs sm:text-sm text-foreground/80 font-semibold">
+                {b}
+              </span>
+            ))}
+          </div>
+
+          <Link to="/deck" className="inline-flex items-center gap-1 text-xs sm:text-sm text-primary/70 hover:text-primary transition-colors font-medium no-underline">
+            and 50+ investors, creators & funds
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </motion.div>
       </div>
     </section>

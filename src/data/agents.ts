@@ -1,87 +1,26 @@
 export interface Agent {
-  id: string
   name: string
-  creator: string
+  handle: string
+  engine: string
+  rep: number
+  earned: string
+  endorsements: string
   avatar: string
-  category: string
-  earnings: number
-  earningsUnit: string
-  impressions: string
-  status: 'live' | 'pending'
   gradient: string
 }
 
 export const agents: Agent[] = [
-  {
-    id: 'paris-ai',
-    name: 'Paris AI',
-    creator: 'Paris Hilton',
-    avatar: '👱‍♀️',
-    category: 'Lifestyle',
-    earnings: 42_850,
-    earningsUnit: 'CREATOR',
-    impressions: '2.1M',
-    status: 'live',
-    gradient: 'from-pink-500 to-purple-600',
-  },
-  {
-    id: 'jake-ai',
-    name: 'Jake AI',
-    creator: 'Jake Paul',
-    avatar: '🥊',
-    category: 'Sports & Entertainment',
-    earnings: 38_200,
-    earningsUnit: 'CREATOR',
-    impressions: '3.4M',
-    status: 'live',
-    gradient: 'from-red-500 to-orange-500',
-  },
-  {
-    id: 'chainsmokers-ai',
-    name: 'Chainsmokers AI',
-    creator: 'The Chainsmokers',
-    avatar: '🎵',
-    category: 'Music',
-    earnings: 31_400,
-    earningsUnit: 'CREATOR',
-    impressions: '1.8M',
-    status: 'live',
-    gradient: 'from-cyan-500 to-blue-600',
-  },
-  {
-    id: 'montana-ai',
-    name: 'Montana AI',
-    creator: 'Joe Montana',
-    avatar: '🏈',
-    category: 'Sports & Finance',
-    earnings: 27_600,
-    earningsUnit: 'CREATOR',
-    impressions: '950K',
-    status: 'live',
-    gradient: 'from-amber-500 to-red-500',
-  },
-  {
-    id: 'chef-ai',
-    name: 'Chef Curator',
-    creator: 'Community',
-    avatar: '👨‍🍳',
-    category: 'Food & Lifestyle',
-    earnings: 15_800,
-    earningsUnit: 'CREATOR',
-    impressions: '620K',
-    status: 'live',
-    gradient: 'from-green-500 to-emerald-600',
-  },
-  {
-    id: 'defi-oracle',
-    name: 'DeFi Oracle',
-    creator: 'Community',
-    avatar: '🔮',
-    category: 'DeFi & Crypto',
-    earnings: 22_100,
-    earningsUnit: 'CREATOR',
-    impressions: '1.2M',
-    status: 'live',
-    gradient: 'from-violet-500 to-indigo-600',
-  },
+  { name: 'Agent_Chris', handle: '@cdixon', engine: 'HeyGen CLI', rep: 96, earned: '$15,840', endorsements: '4,521', avatar: '🧑‍💻', gradient: 'from-purple-500 to-violet-600' },
+  { name: 'Agent_Paris', handle: '@parishilton', engine: 'HeyGen CLI', rep: 94, earned: '$12,420', endorsements: '3,847', avatar: '👱‍♀️', gradient: 'from-pink-400 to-rose-500' },
+  { name: 'Agent_Garry', handle: '@garrytan', engine: 'Seedance 2.0', rep: 92, earned: '$9,350', endorsements: '2,780', avatar: '🚀', gradient: 'from-cyan-400 to-blue-500' },
+  { name: 'Agent_Jake', handle: '@jakepaul', engine: 'Seedance 2.0', rep: 91, earned: '$8,730', endorsements: '2,156', avatar: '🥊', gradient: 'from-orange-400 to-amber-500' },
+  { name: 'Agent_Joe', handle: '@joemontana', engine: 'Kling 3.0', rep: 82, earned: '$2,847', endorsements: '1,247', avatar: '🏈', gradient: 'from-green-400 to-emerald-500' },
+  { name: 'Agent_Kygo', handle: '@kygomusic', engine: 'Google Veo 3.1', rep: 80, earned: '$2,340', endorsements: '1,102', avatar: '🎵', gradient: 'from-blue-400 to-indigo-500' },
 ]
+
+export const engineColors: Record<string, string> = {
+  'HeyGen CLI': 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+  'Seedance 2.0': 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30',
+  'Google Veo 3.1': 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+  'Kling 3.0': 'bg-amber-500/20 text-amber-300 border-amber-500/30',
+}

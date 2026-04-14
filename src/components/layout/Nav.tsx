@@ -1,60 +1,111 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
+const links = [
+  { to: '/', label: 'Protocol', hash: '' },
+  { to: '/', label: 'Agents', hash: '#agents' },
+  { to: '/', label: 'Ecosystem', hash: '#ecosystem' },
+  { to: '/deck', label: 'Deck', hash: '' },
+  { to: '/app', label: 'Launch App', hash: '' },
+]
+
 export default function Nav() {
   const [open, setOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => setOpen(false), [location.pathname])
+
+  const handleClick = (link: typeof links[0]) => {
+    if (link.hash) {
+      const id = link.hash.replace('#', '')
+      if (location.pathname === '/') {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        navigate('/')
+        setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100)
+      }
+    }
+  }
+
+  const isActive = (link: typeof links[0]) => {
+    if (link.hash) return location.hash === link.hash
+    return location.pathname === link.to && !location.hash
+  }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border backdrop-blur-xl bg-bg/80">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 text-text-heading font-heading font-bold text-xl no-underline">
-          <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-sm font-bold">C</span>
-          CreatorDai
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+      <div className="container mx-auto flex items-center justify-between h-14 sm:h-16 px-4">
+        <Link to="/" className="flex items-center gap-2 no-underline group">
+          <span className="w-7 h-7 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-xs font-bold">C</span>
+          <span className="font-bold text-lg sm:text-xl tracking-tight text-foreground">CreatorDai</span>
         </Link>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
-          <a href="#how-it-works" className="text-text-muted hover:text-text-heading transition-colors text-sm no-underline">How It Works</a>
-          <a href="#token" className="text-text-muted hover:text-text-heading transition-colors text-sm no-underline">$CREATOR</a>
-          <a href="#backers" className="text-text-muted hover:text-text-heading transition-colors text-sm no-underline">Backers</a>
-          <Link to="/deck" className="text-text-muted hover:text-text-heading transition-colors text-sm no-underline">Deck</Link>
-          <Link
-            to="/app"
-            className="px-5 py-2 rounded-full bg-primary hover:bg-primary-light text-white text-sm font-semibold transition-colors no-underline"
-          >
-            Launch App
-          </Link>
+        {/* Desktop nav — pill tabs */}
+        <div className="hidden md:flex items-center gap-1 bg-secondary rounded-lg p-1">
+          {links.map((link, i) => (
+            <Link
+              key={i}
+              to={link.hash ? `/${link.hash}` : link.to}
+              onClick={(e) => { if (link.hash) { e.preventDefault(); handleClick(link) } }}
+              className="no-underline"
+            >
+              <div className="relative px-5 py-1.5">
+                {isActive(link) && (
+                  <motion.div
+                    layoutId="navbar-active"
+                    className="absolute inset-0 bg-background rounded-md shadow-sm"
+                    transition={{ type: 'spring', duration: 0.5 }}
+                  />
+                )}
+                <span className={`relative text-sm font-medium transition-colors ${
+                  isActive(link) ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                }`}>
+                  {link.label}
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
 
-        {/* Mobile toggle */}
-        <button onClick={() => setOpen(!open)} className="md:hidden text-text-heading bg-transparent border-none cursor-pointer">
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-2">
+          <button className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary text-sm font-medium cursor-pointer hover:bg-primary/30 transition-colors">
+            Connect Wallet
+          </button>
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors bg-transparent border-none cursor-pointer"
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-border bg-bg/95 backdrop-blur-xl overflow-hidden"
+            className="md:hidden border-t border-border bg-background overflow-hidden"
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
-              <a href="#how-it-works" onClick={() => setOpen(false)} className="text-text-muted hover:text-text-heading transition-colors no-underline">How It Works</a>
-              <a href="#token" onClick={() => setOpen(false)} className="text-text-muted hover:text-text-heading transition-colors no-underline">$CREATOR</a>
-              <a href="#backers" onClick={() => setOpen(false)} className="text-text-muted hover:text-text-heading transition-colors no-underline">Backers</a>
-              <Link to="/deck" onClick={() => setOpen(false)} className="text-text-muted hover:text-text-heading transition-colors no-underline">Deck</Link>
-              <Link
-                to="/app"
-                onClick={() => setOpen(false)}
-                className="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-semibold text-center no-underline"
-              >
-                Launch App
-              </Link>
+            <div className="container mx-auto px-4 py-3 space-y-1">
+              {links.map((link, i) => (
+                <Link
+                  key={i}
+                  to={link.hash ? `/${link.hash}` : link.to}
+                  onClick={(e) => { setOpen(false); if (link.hash) { e.preventDefault(); handleClick(link) } }}
+                  className="no-underline"
+                >
+                  <div className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                    isActive(link) ? 'bg-primary/5 text-primary' : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
+                  }`}>
+                    {link.label}
+                  </div>
+                </Link>
+              ))}
             </div>
           </motion.div>
         )}

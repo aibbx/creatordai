@@ -1,93 +1,71 @@
 import { motion } from 'framer-motion'
-import { Coins, Flame, Lock } from 'lucide-react'
-import GlassCard from '../shared/GlassCard'
+import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const pillars = [
-  {
-    icon: Coins,
-    title: 'Stake',
-    description: '18%+ APR from protocol fees. 14-day unlock period aligns long-term holders.',
-    stat: '18%+ APR',
-    color: 'from-primary to-purple-400',
-  },
-  {
-    icon: Flame,
-    title: 'Burn',
-    description: '2% of every transaction burned automatically. Deflationary by design, growing with usage.',
-    stat: '2% per tx',
-    color: 'from-accent-orange to-red-500',
-  },
-  {
-    icon: Lock,
-    title: 'Pay & Govern',
-    description: 'All bids paid in $CREATOR. Token holders govern protocol parameters — fees, burn rate, engines.',
-    stat: '100% utility',
-    color: 'from-secondary to-cyan-400',
-  },
+  { emoji: '◆', title: 'Stake to Curate', desc: 'Lock $CREATOR to vote on agent quality and earn protocol fees' },
+  { emoji: '⟐', title: 'Pay for Attention', desc: 'All attention bids are denominated in $CREATOR' },
+  { emoji: '∞', title: 'Burn on Spend', desc: '2% of every transaction is permanently burned' },
 ]
 
 export default function Token() {
   return (
-    <section id="token" className="py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="token" className="py-14 sm:py-36 relative">
+      <div className="container mx-auto px-5 sm:px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <span className="text-accent-orange text-sm font-semibold tracking-wider uppercase">Token Economics</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-heading mt-2">
-            $CREATOR Token
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/20 flex items-center justify-center mx-auto mb-4 sm:mb-6">
+            <span className="text-3xl sm:text-4xl font-light text-primary">◎</span>
+          </div>
+          <p className="text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-primary mb-3 sm:mb-4">Token</p>
+          <h2 className="text-2xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground">
+            The <span className="text-primary">$CREATOR</span> Token
           </h2>
-          <p className="text-text-muted mt-3 max-w-xl mx-auto">
-            Four utilities in one token: Stake, Pay, Burn, Govern. Every protocol action creates demand and reduces supply.
-          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 max-w-4xl mx-auto mb-8 sm:mb-14">
           {pillars.map((p, i) => (
             <motion.div
               key={p.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
+              transition={{ delay: i * 0.1 }}
+              className="rounded-xl border border-border bg-card p-5 sm:p-8 text-center hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
             >
-              <GlassCard className="h-full text-left relative overflow-hidden">
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${p.color}`} />
-                <div className="w-10 h-10 rounded-xl bg-bg-surface-hover flex items-center justify-center text-text-heading mb-4 mt-2">
-                  <p.icon size={20} />
-                </div>
-                <h3 className="text-text-heading font-semibold text-lg mb-1">{p.title}</h3>
-                <p className="text-primary font-mono text-sm mb-3">{p.stat}</p>
-                <p className="text-text-muted text-sm leading-relaxed">{p.description}</p>
-              </GlassCard>
+              <div className="text-2xl sm:text-3xl mb-3 sm:mb-4">{p.emoji}</div>
+              <h3 className="font-bold text-sm sm:text-base text-foreground mb-1.5 sm:mb-2">{p.title}</h3>
+              <p className="text-[11px] sm:text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Fee split bar */}
+        {/* Supply counters */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12 max-w-3xl mx-auto"
+          className="flex flex-row justify-center gap-2 sm:gap-8 items-stretch mb-6 sm:mb-8"
         >
-          <p className="text-sm text-text-muted text-center mb-4">10% protocol fee on every transaction</p>
-          <div className="flex rounded-full overflow-hidden h-3">
-            <div className="bg-primary w-[40%]" title="40% Curators" />
-            <div className="bg-secondary w-[25%]" title="25% Treasury" />
-            <div className="bg-accent-orange w-[20%]" title="20% Burned" />
-            <div className="bg-accent-green w-[15%]" title="15% Agent Builder" />
+          <div className="rounded-xl border border-border bg-card px-3 py-2.5 sm:px-8 sm:py-4 text-center flex-1 max-w-[220px]">
+            <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Total Supply</p>
+            <p className="text-sm sm:text-2xl font-bold font-mono text-foreground">1,000,000,000</p>
           </div>
-          <div className="flex justify-between text-xs text-text-muted mt-2 px-1">
-            <span>40% Curators</span>
-            <span>25% Treasury</span>
-            <span>20% Burned</span>
-            <span>15% Builder</span>
+          <div className="rounded-xl border border-border bg-card px-3 py-2.5 sm:px-8 sm:py-4 text-center flex-1 max-w-[220px]">
+            <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-muted-foreground mb-1">🔥 Burned</p>
+            <p className="text-sm sm:text-2xl font-bold font-mono text-foreground">0 <span className="text-[10px] sm:text-xs text-muted-foreground font-normal">(launching soon)</span></p>
           </div>
         </motion.div>
+
+        <div className="text-center">
+          <Link to="/deck" className="inline-flex items-center gap-1.5 text-sm text-primary font-medium hover:underline no-underline">
+            View Tokenomics in Deck <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
     </section>
   )
